@@ -1,0 +1,12 @@
+import os
+
+class Config(object):
+    USER = os.environ.get("POSTGRES_USE", 'trazin')
+    PASSWORD = os.environ.get("POSTGRES_PASSWORD", 'trazin')
+    HOST = os.environ.get("POSTGRES_HOST", '127.0.0.1')
+    PORT = os.environ.get("POSTGRES_PORT", '5532')
+    DB = os.environ.get("POSTGRES_DB", 'mydb')
+
+    SQLALCHEMY_DATABASE_URI = f'postgresql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DB}'
+    SECRET_KEY = 'fdsfklgfd4skfpgo5kyonmv02i49g$_dsdft5[t0og4]'
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
