@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Регистрация{% endblock  %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data" class="form-control d-flex flex-column gap-2">
+        {{ form.csrf_token }}
+        {{ form.name }}
+        {{ form.login }}
+        {{ form.avatar }}
+        {{ form.pas }}
+        {{ form.conf_pas }}
+        {{ form.submit }}
+    </form>
+{% endblock  %}

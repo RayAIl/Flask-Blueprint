@@ -1,0 +1,15 @@
+#Font Montserrat
+
+@font-face {
+    font-family: 'montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/montserrat/Montserrat-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'montserrat';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../fonts/montserrat/Montserrat-Bold.ttf');
+}
