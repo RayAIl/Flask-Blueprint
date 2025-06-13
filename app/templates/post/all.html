@@ -13,7 +13,7 @@
             <th scope="col">Преподователь</th>
             <th scope="col">Тема</th>
             <th scope="col">Студент</th>
-            <th scope="col">Действия</th>
+            {% if current_user.is_authenticated %}<th scope="col">Действия</th>{% endif %}
     </thead>
     <tbody>
         {% for post in posts %}
@@ -21,11 +21,12 @@
             <td>{{ post.teacher }}</td>
             <td>{{ post.subject }}</td>
             <td>{{ post.student }}</td>
+        {% if current_user.is_authenticated %}
             <td>
                 <a href="{{ url_for('post.update', id=post.id) }}" class="btn btn-sm btn-secondary">Ред.<span class="fa fa-edit"></span></a>
                 <a href="{{ url_for('post.delete', id=post.id) }}" class="btn btn-sm btn-danger"><span class="fa fa-trash">Удалить</span></a>
-
             </td>
+        {% endif %}
         </tr>
         {% endfor %}
     </tbody>

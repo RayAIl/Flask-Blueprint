@@ -4,12 +4,19 @@
 
 {% block content %}
     <form method="post" enctype="multipart/form-data" class="form-control d-flex flex-column gap-2">
-        {{ form.csrf_token }}
-        {{ form.name }}
-        {{ form.login }}
-        {{ form.avatar }}
-        {{ form.pas }}
-        {{ form.conf_pas }}
-        {{ form.submit }}
+        {{ form.csrf_token}}
+        {{ form.name(class="form-control", placeholder="ФИО") }}
+        {{ form.login(class="form-control", placeholder="Логин") }}
+        {% if form.login.errors %}
+            <div class="invalid-feedback" style="display: block!important;">
+                {% for error in form.login.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {{ form.avatar(class="form-control") }}
+        {{ form.pas(class="form-control", placeholder="Пароль") }}
+        {{ form.conf_pas(class="form-control", placeholder="Подтвердите пароль") }}
+        {{ form.submit(class="btn btn-success") }}
     </form>
 {% endblock  %}
