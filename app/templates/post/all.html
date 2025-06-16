@@ -2,34 +2,50 @@
 
 {% block title %}Все темы{% endblock  %}
 
-{% block style %}
-<link rel="stylesheet" href="{{ url_for('static', filename='CSS/blocks/table.css') }}">
-{% endblock %}
+{% block style %}{% assets 'post_all_CSS' %}<link rel="stylesheet" href="{{ ASSET_URL }}">{% endassets %}{% endblock %}
 
 {% block content %}
+<form method="post", class="form-control d-flex flex-row gap-2" id="teacherForm">
+    {{ form.csrf_token }}
+    {{ form.teacher }}
+    <input type="submit" class="btn btn-success" value="Показать">
+</form>
+
 <div class="table-responsive custom-table-responsive">
     <table class="table custom-table">
         <thead>
             <th scope="col">Преподователь</th>
             <th scope="col">Тема</th>
             <th scope="col">Студент</th>
-            {% if current_user.is_authenticated %}<th scope="col">Действия</th>{% endif %}
+            <th scope="col">Действия</th>
     </thead>
     <tbody>
         {% for post in posts %}
         <tr scope="row">
-            <td>{{ post.teacher }}</td>
-            <td>{{ post.subject }}</td>
-            <td>{{ post.student }}</td>
-        {% if current_user.is_authenticated %}
             <td>
+                <img width="95px" height="95px" src="{{url_for('static', filename='upload/'+ post.author.avatar)}}" alt='Преподователь'>
+                {{ post.author.name }}
+            </td>
+            <td>{{ post.subject }}</td>
+            <td>
+                {% with student = user.query.get(post.student) %}
+                    <img width="95px" height="95px" src="{{url_for('static', filename='upload/'+ student.avatar)}}" alt='Студент'>
+                    {{ student.name }}
+                {% endwith %}
+            </td>
+        
+            <td>
+                {% if current_user.is_authenticated and post.author.id == current_user.id %}
                 <a href="{{ url_for('post.update', id=post.id) }}" class="btn btn-sm btn-secondary">Ред.<span class="fa fa-edit"></span></a>
                 <a href="{{ url_for('post.delete', id=post.id) }}" class="btn btn-sm btn-danger"><span class="fa fa-trash">Удалить</span></a>
+                {% endif %}
             </td>
-        {% endif %}
         </tr>
         {% endfor %}
     </tbody>
 </table>
 </div>
 {% endblock  %}
+
+{% block script %}{% assets 'post_all_js' %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>{% endassets %}{% endblock %}
