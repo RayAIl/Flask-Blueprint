@@ -1,1 +1,3 @@
 # ProjecktFlask
+
+# Шаблон Flask
