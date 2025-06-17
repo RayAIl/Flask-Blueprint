@@ -1,8 +1,8 @@
 import os
 
-from flask_assets import Bundle
-
+from flask_assets import Bundle, Environment
 from .functions import recursive_filt_iter
+
 
 def get_bundle(route, tpl, ext, paths, type=False):
     """
@@ -53,7 +53,12 @@ def get_path(route, tpl, ext, type):
         return f"/{route}/{tpl}/{ext}"
 
 def get_filter(ext):
-    return f"{ext}"
+    if ext.upper() == 'CSS':
+        return 'cssmin' 
+    elif ext.upper() == 'JS':
+        return 'jsmin'   
+    else:
+        return None
 
 bundles = {
     "post": {
@@ -63,7 +68,7 @@ bundles = {
             ],
             
             "js": [
-                get_bundle('post', 'all', 'CSS', ['js/app.js'])
+                get_bundle('post', 'all', 'JS', ['js/app.js'])
                 
                 ],
         },
