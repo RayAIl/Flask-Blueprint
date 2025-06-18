@@ -6,10 +6,10 @@ class Config(object):
     UPLOAD_PATH = "/static/upload/"
     SERVER_PATH = ABSPATH_IN_APPNAME + UPLOAD_PATH
 
-    USER = os.environ.get("POSTGRES_USE", 'trazin')
+    USER = os.environ.get("POSTGRES_USER", 'trazin')
     PASSWORD = os.environ.get("POSTGRES_PASSWORD", 'trazin')
-    HOST = os.environ.get("POSTGRES_HOST", '127.0.0.1')
-    PORT = os.environ.get("POSTGRES_PORT", '5532')
+    HOST = os.environ.get("POSTGRES_HOST", 'postgres')
+    PORT = os.environ.get("POSTGRES_PORT", '5432')
     DB = os.environ.get("POSTGRES_DB", 'mydb')
 
     SQLALCHEMY_DATABASE_URI = f'postgresql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DB}'
