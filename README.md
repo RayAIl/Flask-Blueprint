@@ -97,13 +97,13 @@
 
 1. **Клонирование репозитория**
 ```bash
-git clone https://github.com/yourusername/flaskforge.git
-cd flaskforge
+git clone https://github.com/yourusername/flask.git
+cd flask
 ```
 
 2. **Настройка переменных окружения**
 ```bash
-cp .env.example .env
+cp .env
 # Отредактируйте .env файл под ваши нужды
 ```
 
@@ -116,28 +116,6 @@ docker-compose up --build
 ```
 http://localhost:5000
 ```
-
-### Альтернативная установка (без Docker)
-
-```bash
-# Создание виртуального окружения
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-# или
-venv\Scripts\activate     # Windows
-
-# Установка зависимостей
-pip install -r requirements.txt
-
-# Инициализация базы данных
-flask db init
-flask db migrate -m "Initial migration"
-flask db upgrade
-
-# Запуск приложения
-python run.py
-```
-
 ---
 
 ## 📸 Скриншоты
