@@ -6,7 +6,7 @@ class Config(object):
     UPLOAD_PATH = "/static/upload/"
     SERVER_PATH = ABSPATH_IN_APPNAME + UPLOAD_PATH
 
-    USER = os.environ.get("POSTGRES_USER", 'trazin')
+    USER = os.environ.get("POSTGRES_USER", 'postgres')
     PASSWORD = os.environ.get("POSTGRES_PASSWORD", 'trazin')
     HOST = os.environ.get("POSTGRES_HOST", 'postgres')
     PORT = os.environ.get("POSTGRES_PORT", '5432')

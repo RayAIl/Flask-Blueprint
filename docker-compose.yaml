@@ -2,6 +2,10 @@ services:
   postgres:
     image: postgres:latest
     container_name: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     volumes:
       - ~/.pg/pg_data/flask:/var/lib/postgresql/data
     env_file:
@@ -20,16 +24,16 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: flask
-    volumes:
-      - ~/.uploads/images/flask:/app/app/static/upload
-    env_file:
-      - .env
     environment:
       - POSTGRES_HOST=${POSTGRES_HOST}
       - POSTGRES_PORT=${POSTGRES_PORT}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - ~/.uploads/images/flask:/app/app/static/upload
+    env_file:
+      - .env
     depends_on:
       postgres:
         condition: service_healthy
