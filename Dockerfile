@@ -11,16 +11,12 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Копируем requirements.txt для кэширования
 COPY requirements.txt .
 
-# Устанавливаем Python пакеты
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Копируем остальные файлы
 COPY . .
 
-# Создаем директорию для загрузок
 RUN mkdir -p /app/app/static/upload
 
 # Открываем порт
