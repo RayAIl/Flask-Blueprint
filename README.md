@@ -4,7 +4,6 @@
   <tr>
     <td><img src="app/Image/img1.png " width="180" alt="Главная"></td>
     <td><img src="app/Image/img2.png " width="180" alt="Поле регистрации"></td>
-    <td><img src="app/Image/ " width="180" alt=""></td>
   </tr>
 </table>
 
