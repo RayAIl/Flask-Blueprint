@@ -92,19 +92,24 @@
 ```
 # Клонировать репозиторий
 git clone https://github.com/RayAIl/Flask-Blueprint.git
-
+```
+```
 # Перейти в директорию проекта
 cd Flask-Blueprint
-
+```
+```
 # Запустить проект с выводом логов (режим разработки)
 docker-compose up --build
-
+```
+```
 # Для запуска в фоновом режиме (без логов)
 docker-compose up --build -d
-
+```
+```
 # Остановить проект
 docker-compose down
-
+```
+```
 # Остановить проект с удалением томов (очистка данных)
 docker-compose down -v
 ```
